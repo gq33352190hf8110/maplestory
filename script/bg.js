@@ -16,7 +16,7 @@ function UI() {
 	this.y = window.HEIGHT - 62;
 	this.res = window.resource.ui["main_bar"][0];
 
-	this.tip = {color: "white", tip: "[作者]欢迎光临冒险岛世界！"};
+	this.tip = {color: "white", tip: "[Tips] Welcome To MS JS！"};
 
 	this.createTip = function(type, tip) {
 		var color;
@@ -35,37 +35,37 @@ function UI() {
 		var num = parseInt(Math.random() * 5000);
 		switch(num) {
 			case 0:
-				this.tip = this.createTip(0, "[帮助]在光柱处按方向键上，可以切换地图。");
+				this.tip = this.createTip(0, "[Tips] Hit Monster Till They Dead.");
 				break;
 			case 1:
-				this.tip = this.createTip(0, "[帮助]背包满后，可以丢弃物品。");
+				this.tip = this.createTip(0, "[Tips] The Game Will Be Update.");
 				break;
 			case 2:
-				this.tip = this.createTip(0, "[帮助]在空中按方向键上可以爬绳子和梯子.");
+				this.tip = this.createTip(0, "[Tips] Please Remember The Help . How To Play.");
 				break;
 			case 3:
-				this.tip = this.createTip(1, "[作者]本游戏仅供测试。");
+				this.tip = this.createTip(1, "[Ads] This Is An Ads.");
 				break;
 			case 4:
-				this.tip = this.createTip(1, "[作者]QQ1439080086。");
+				this.tip = this.createTip(1, "[Ads] Superficial Ads.");
 				break;
 			case 5:
-				this.tip = this.createTip(0, "[帮助]杀死怪物后，有一定概率获取装备，装备可以提升角色属性。")
+				this.tip = this.createTip(0, "[Tips] The Monster Is Hard To Kill.")
 				break;
 			case 6:
-				this.tip = this.createTip(0, "[帮助]升级后可以获得5个能力点，能力点用于提升角色属性。");
+				this.tip = this.createTip(0, "[Tips] Not Everything Is Perfect.");
 				break;
 			case 7:
-				this.tip = this.createTip(0, "[帮助]力量影响攻击力和防御力。");
+				this.tip = this.createTip(0, "[Tips] Later I Will Put Auths.");
 				break;
 			case 8:
-				this.tip = this.createTip(0, "[帮助]敏捷影响攻击力，防御力和魔法防御力。");
+				this.tip = this.createTip(0, "[Tips] Share This To Someone Else.");
 				break;
 			case 9:
-				this.tip = this.createTip(0, "[帮助]智力影响魔法防御力。");
+				this.tip = this.createTip(0, "[Tips] Still In Beta.");
 				break;
 			case 10:
-				this.tip = this.createTip(0, "[帮助]运气影响攻击力。");
+				this.tip = this.createTip(0, "[Tips] Don't Rage Quit.");
 				break;
 		}
 	}

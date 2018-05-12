@@ -63,7 +63,7 @@ window.onload = function() {
 			ctx.drawImage(window.resource.bg["bg"][3], 0, 0, window.WIDTH, window.HEIGHT);
 		} else {
 			ctx.clearRect(0, 0, window.WIDTH, window.HEIGHT);
-			ctx.fillText("正在载入游戏资源，请稍后...  " + (window.resource.curr_amount / window.resource.total_amount * 100).toFixed(2) + "%", window.WIDTH / 2,  window.HEIGHT / 2);
+			ctx.fillText("Loading Resource...  " + (window.resource.curr_amount / window.resource.total_amount * 100).toFixed(2) + "%", window.WIDTH / 2,  window.HEIGHT / 2);
 		}
 	}, 1000 / window.FPS, false);
 	resource.load();

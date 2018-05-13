@@ -4,12 +4,13 @@ A 2D game using HTML5 and JS.
 
 
 ## Description
-This is a demo of the cool 2d online game [MapleStory](http://mxd.sdo.com/web6/home/index.asp), and all the resources come from [MapleSimulator](http://www.maplesimulator.com/).
+A game inspired from Nexon's MapleStory.
 
-This game may be not so cool, there are also some bugs, especially in the loading scene, if the progress stay a long time, please refresh. If I have time, I will recontruct it.
+``This game may be not so cool, there are also some bugs, especially in the loading scene, if the progress stay a long time, please refresh. If I have time, I will recontruct it.``
 
-The demo online click [here](https://gq33352190hf8110.github.io/maplestory).
+**demo**: [here](https://gq33352190hf8110.github.io/maplestory).
 
+Please Note: still in development.
 
 ## How to Play
 - **Dirction key:** move

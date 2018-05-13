@@ -162,7 +162,7 @@ function PlayerAttr() {
 }
 
 function MonstersAttr() {
-	this.lanWoNiu = {
+	this.bluesnail = {
 		speed: 3,
 		min_magic_attack: 0,
 		max_magic_attack: 0,
@@ -173,11 +173,11 @@ function MonstersAttr() {
 		exp: 4,
 		things: []
 	}
-	this.lanWoNiu.things["金币"] = {type: 0, min: 3, max: 8, percent: 0.8};
-	this.lanWoNiu.things["蓝色蜗牛壳"] = {type: 3, min: 1, max: 1, percent: 0.7};
-	this.lanWoNiu.things["红色药水"] = {type: 2, min: 1, max: 3, percent: 0.1};
-	this.lanWoNiu.things["蓝色药水"] = {type: 2, min: 1, max: 3, percent: 0.1};
-	this.lanWoNiu.things["刮胡刀"] = {type: 1, percent: 0.02};
+	this.bluesnail.things["金币"] = {type: 0, min: 3, max: 8, percent: 0.8};
+	this.bluesnail.things["蓝色蜗牛壳"] = {type: 3, min: 1, max: 1, percent: 0.7};
+	this.bluesnail.things["红色药水"] = {type: 2, min: 1, max: 3, percent: 0.1};
+	this.bluesnail.things["蓝色药水"] = {type: 2, min: 1, max: 3, percent: 0.1};
+	this.bluesnail.things["刮胡刀"] = {type: 1, percent: 0.02};
 
 	this.moGuZai = {
 		speed: 3,
@@ -450,10 +450,10 @@ function MonstersAttr() {
 	this.riGuangJingLing.things["活力神水"] = {type: 2, min: 1, max: 3, percent: 0.1};
 	this.riGuangJingLing.things["黑唐衫"] = {type: 1, percent: 0.01};
 
-	this.getMonstersAttr = function() {
+	this.getMonstersAttr = function() { // Blue Snail //Blue Snail
 		var monsters_attr = [];
-			monsters_attr["蓝蜗牛"] = this.lanWoNiu;
-			monsters_attr["蘑菇仔"] = this.moGuZai;
+			monsters_attr["Blue Snail"] = this.bluesnail; //lanWoNiu
+			monsters_attr["Fungi"] = this.moGuZai;
 			monsters_attr["进击的刺蘑菇"] = this.jinJiDeCiMoGu;
 			monsters_attr["小青蛇"] = this.xiaoQingShe;
 			monsters_attr["钢甲石头人"] = this.gangJiaShiTouRen;

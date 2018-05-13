@@ -1,3 +1,4 @@
+
 function NormalMonstersStackItem(ax, ay, awidth, count, name) {
 	this.ax = ax;
 	this.ay = ay;
@@ -5,7 +6,7 @@ function NormalMonstersStackItem(ax, ay, awidth, count, name) {
 	this.count = count;
 	this.name = name;
 
-	this.update = function(map_speed_x, map_speed_y) {
+	this.update = function (map_speed_x, map_speed_y) {
 		this.ax += map_speed_x;
 		this.ay += map_speed_y;
 	}
@@ -18,7 +19,7 @@ function SkillAttackMonstersStackItem(ax, ay, awidth, count, name) {
 	this.count = count;
 	this.name = name;
 
-	this.update = function(map_speed_x, map_speed_y) {
+	this.update = function (map_speed_x, map_speed_y) {
 		this.ax += map_speed_x;
 		this.ay += map_speed_y;
 	}
@@ -49,12 +50,12 @@ function MonsterSkillEffect(data) {
 
 	this.max_distance = data.max_distance;
 
-	this.magicAttack = function(player_magic_defense) {
+	this.magicAttack = function (player_magic_defense) {
 		var num = parseInt(Math.random() * (window.monsters_attr[this.name].max_magic_attack - window.monsters_attr[this.name].min_magic_attack + 1) + window.monsters_attr[this.name].min_magic_attack - player_magic_defense / 3);
 		return num;
 	}
 
-	this.update = function(map_speed_x, map_speed_y) {
+	this.update = function (map_speed_x, map_speed_y) {
 		this.updateX(map_speed_x);
 		this.updateY(map_speed_y);
 		this.updateRect(map_speed_x, map_speed_y);
@@ -64,32 +65,32 @@ function MonsterSkillEffect(data) {
 		this.check();
 	}
 
-	this.updateX = function(map_speed_x) {
+	this.updateX = function (map_speed_x) {
 		this.start_x += map_speed_x;
 		this.x += map_speed_x;
 		this.x += this.x_speed;
 
 	}
 
-	this.updateY = function(map_speed_y) {
+	this.updateY = function (map_speed_y) {
 		this.start_y += map_speed_y;
 		this.y += map_speed_y;
 		this.y += this.y_speed;
 	}
 
-	this.updateRect = function(map_speed_x, map_speed_y) {
+	this.updateRect = function (map_speed_x, map_speed_y) {
 		this.rect.x = this.x;
 		this.rect.y = this.y;
 	}
 
 
-	this.check = function() {
+	this.check = function () {
 		if (Math.sqrt(Math.pow(this.x - this.start_x, 2) + Math.pow(this.y - this.start_y, 2)) > this.max_distance) {
 			this.is_finish = true;
 		}
 	}
 
-	this.checkCollision = function(rect, can_hit) {
+	this.checkCollision = function (rect, can_hit) {
 		if (can_hit && this.rect.collision(rect)) {
 			return true;
 		} else {
@@ -97,7 +98,7 @@ function MonsterSkillEffect(data) {
 		}
 	}
 
-	this.draw = function(ctx) {
+	this.draw = function (ctx) {
 		if (this.is_right) {
 			ctx.drawRightImage(this.curr_res, this.x, this.y);
 		} else {
@@ -107,36 +108,36 @@ function MonsterSkillEffect(data) {
 }
 
 function MonsterSkillEffectFactory() {
-	this.createSkillEffect = function(monster, player_center_x, player_center_y, speed, res) {
+	this.createSkillEffect = function (monster, player_center_x, player_center_y, speed, res) {
 		var data = {};
-			data.min_magic_attack = monster.min_magic_attack;
-			data.max_magic_attack = monster.max_magic_attack;
+		data.min_magic_attack = monster.min_magic_attack;
+		data.max_magic_attack = monster.max_magic_attack;
 
-			data.name = monster.name;
-			data.x = monster.is_right ? monster.x + monster.width / 2 : monster.x - monster.attack_animation.res[0].width / 2 + monster.width / 2;
-			data.y = monster.y + monster.height / 2;
-			data.width = res[0].width;
-			data.height = res[0].height;
-			data.is_right = monster.is_right;
-			data.max_distance = 250;
-			data.animation = new Animation(res, 500);
+		data.name = monster.name;
+		data.x = monster.is_right ? monster.x + monster.width / 2 : monster.x - monster.attack_animation.res[0].width / 2 + monster.width / 2;
+		data.y = monster.y + monster.height / 2;
+		data.width = res[0].width;
+		data.height = res[0].height;
+		data.is_right = monster.is_right;
+		data.max_distance = 250;
+		data.animation = new Animation(res, 500);
 
 		var angle = Math.atan2(player_center_y - data.y, player_center_x - data.x);
-			data.x_speed = speed * Math.cos(angle);
-			data.y_speed = speed * Math.sin(angle);
+		data.x_speed = speed * Math.cos(angle);
+		data.y_speed = speed * Math.sin(angle);
 
 		return new MonsterSkillEffect(data);
 	}
 
-	this.getSkillEffect = function(monster, player_center_x, player_center_y) {
-		switch(monster.name) {
+	this.getSkillEffect = function (monster, player_center_x, player_center_y) {
+		switch (monster.name) {
 			case "星光精灵":
 				return this.createSkillEffect(monster, player_center_x, player_center_y, 5, window.resource.xingguangjingling["attack1.info.ball"]);
 			case "月光精灵":
 				return this.createSkillEffect(monster, player_center_x, player_center_y, 5, window.resource.yueguangjingling["attack1.info.ball"]);
 			case "日光精灵":
 				return this.createSkillEffect(monster, player_center_x, player_center_y, 5, window.resource.riguangjingling["attack1.info.ball"]);
-			
+
 		}
 	}
 }
@@ -151,37 +152,37 @@ function MonsterSkillHit(data) {
 	this.width = this.animation.res[0].width;
 	this.height = this.animation.res[0].height;
 
-	this.update = function(player_center_x, player_center_y) {
+	this.update = function (player_center_x, player_center_y) {
 		this.x = player_center_x - this.width / 2;
 		this.y = player_center_y - this.height / 2;
 
 		this.curr_res = this.animation.getCurrFrame();
 	}
 
-	this.getIsFinish = function() {
+	this.getIsFinish = function () {
 		return this.animation.is_finish;
 	}
 
-	this.draw = function(ctx) {
+	this.draw = function (ctx) {
 		ctx.drawImage(this.curr_res, this.x, this.y);
 	}
 
 }
 
 function MonsterSkillHitFactory() {
-	this.createSkillHit = function(x, y, time, res) {
+	this.createSkillHit = function (x, y, time, res) {
 		var data = {};
-			data.animation = new Animation(res, time);
-			data.width = data.animation.res[0].width;
-			data.height = data.animation.res[0].height;
-			data.x = x - data.width / 2;
-			data.y = y - data.height / 2;
+		data.animation = new Animation(res, time);
+		data.width = data.animation.res[0].width;
+		data.height = data.animation.res[0].height;
+		data.x = x - data.width / 2;
+		data.y = y - data.height / 2;
 
 		return new MonsterSkillHit(data);
 	}
 
-	this.getSkillHit = function(monster_name, player_center_x, player_center_y) {
-		switch(monster_name) {
+	this.getSkillHit = function (monster_name, player_center_x, player_center_y) {
+		switch (monster_name) { // Blue Snail // Fungi // bluesnail
 			case "星光精灵":
 				return this.createSkillHit(player_center_x, player_center_y, 300, window.resource.xingguangjingling["attack1.info.hit"]);
 			case "月光精灵":
@@ -199,14 +200,14 @@ function Rect(x, y, width, height) {
 	this.width = width;
 	this.height = height;
 
-	this.collision = function(rect) {
+	this.collision = function (rect) {
 		if (this.contain(rect.x, rect.y) || this.contain(rect.x, rect.y + rect.height) || this.contain(rect.x + rect.width, rect.y) || this.contain(rect.x + rect.width, rect.y + rect.height) || rect.contain(this.x, this.y) || rect.contain(this.x, this.y + this.height) || rect.contain(this.x + this.width, this.y) || rect.contain(this.x + this.width, this.y + this.height)) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-	this.contain = function(x, y) {
+	this.contain = function (x, y) {
 		if (this.x < x && x < this.x + this.width && this.y < y && y < this.y + this.height) {
 			return true;
 		} else {
@@ -228,7 +229,7 @@ function Animation(res, time, flag_frame) {
 	this.flag_frame = flag_frame;
 	this.is_finish = false;
 
-	this.getCurrFrame = function() {
+	this.getCurrFrame = function () {
 		this.count++;
 		if (this.count > this.max_count) {
 			this.curr_frame++;
@@ -245,7 +246,7 @@ function Animation(res, time, flag_frame) {
 		return this.res[this.curr_frame];
 	}
 
-	this.getIsFlagFrame = function() {
+	this.getIsFlagFrame = function () {
 		if (this.flag_frame == this.curr_frame && this.count == 0) {
 			return true;
 		} else {
@@ -253,7 +254,7 @@ function Animation(res, time, flag_frame) {
 		}
 	}
 
-	this.reset = function() {
+	this.reset = function () {
 		this.count = 0;
 		this.curr_frame = 0;
 		this.is_finish = false;
@@ -261,7 +262,7 @@ function Animation(res, time, flag_frame) {
 }
 
 function Percent() {
-	this.gen = function(percent) {
+	this.gen = function (percent) {
 		var go = Math.random();
 		if (1 - percent <= go) {
 			return true;
@@ -301,17 +302,17 @@ function Backpack() {
 		}
 	}
 
-	this.checkCanAdd = function(thing) {
-		switch(thing.type) {
+	this.checkCanAdd = function (thing) {
+		switch (thing.type) {
 			case 1:
 				if (this.empty_list["装备"].length == 0) return false;
 				break;
 			case 2:
 				for (var i in this.backpack["消耗"]) {
-					if (this.backpack["消耗"][i] != null && this.backpack["消耗"][i].name == thing.name 
+					if (this.backpack["消耗"][i] != null && this.backpack["消耗"][i].name == thing.name
 						&& (this.backpack["消耗"][i].amount != this.consumable_limit)
-					 	&& (this.backpack["消耗"][i].amount + thing.amount <= this.consumable_limit 
-						|| this.backpack["消耗"][i].amount + thing.amount > this.consumable_limit && this.empty_list["消耗"].length != 0)) {
+						&& (this.backpack["消耗"][i].amount + thing.amount <= this.consumable_limit
+							|| this.backpack["消耗"][i].amount + thing.amount > this.consumable_limit && this.empty_list["消耗"].length != 0)) {
 						this.consumable_pos = i;
 						return true;
 					}
@@ -321,10 +322,10 @@ function Backpack() {
 				break;
 			case 3:
 				for (var i in this.backpack["其他"]) {
-					if (this.backpack["其他"][i] != null && this.backpack["其他"][i].name == thing.name 
+					if (this.backpack["其他"][i] != null && this.backpack["其他"][i].name == thing.name
 						&& (this.backpack["其他"][i].amount != this.other_limit)
-					 	&& (this.backpack["其他"][i].amount + thing.amount <= this.other_limit 
-						|| this.backpack["其他"][i].amount + thing.amount > this.other_limit && this.empty_list["其他"].length != 0)) {
+						&& (this.backpack["其他"][i].amount + thing.amount <= this.other_limit
+							|| this.backpack["其他"][i].amount + thing.amount > this.other_limit && this.empty_list["其他"].length != 0)) {
 						this.other_pos = i;
 						return true;
 					}
@@ -333,13 +334,13 @@ function Backpack() {
 				if (this.empty_list["其他"].length == 0) return false;
 				break;
 			case 4:
-				break;		
+				break;
 		}
 		return true;
 	}
 
-	this.add = function(thing) {
-		switch(thing.type) {
+	this.add = function (thing) {
+		switch (thing.type) {
 			case 1:
 				var pos = (this.empty_list["装备"].splice(0, 1))[0];
 				this.backpack["装备"][pos] = new EquipmentItem(thing.name, thing.curr_res);
@@ -349,7 +350,7 @@ function Backpack() {
 					if (this.backpack["消耗"][this.consumable_pos].amount + thing.amount <= this.consumable_limit) {
 						this.backpack["消耗"][this.consumable_pos].amount += thing.amount;
 					} else {
-						var amount =  this.consumable_limit - this.backpack["消耗"][this.consumable_pos].amount;
+						var amount = this.consumable_limit - this.backpack["消耗"][this.consumable_pos].amount;
 						this.backpack["消耗"][this.consumable_pos].amount = this.consumable_limit;
 
 						var pos = (this.empty_list["消耗"].splice(0, 1))[0];
@@ -366,7 +367,7 @@ function Backpack() {
 					if (this.backpack["其他"][this.other_pos].amount + thing.amount <= this.other_limit) {
 						this.backpack["其他"][this.other_pos].amount += thing.amount;
 					} else {
-						var amount =  this.other_limit - this.backpack["其他"][this.other_pos].amount;
+						var amount = this.other_limit - this.backpack["其他"][this.other_pos].amount;
 						this.backpack["其他"][this.other_pos].amount = this.other_limit;
 
 						var pos = (this.empty_list["其他"].splice(0, 1))[0];
@@ -379,7 +380,7 @@ function Backpack() {
 				}
 				break;
 			case 4:
-				break;		
+				break;
 		}
 	}
 
@@ -387,8 +388,8 @@ function Backpack() {
 	this.y = 50;
 	this.open = "装备";
 
-	this.mouse_point = {index: -1, mouse_x: 0, mouse_y: 0};
-	this.select_point = {index: -1, x: 0, y: 0, select: -1};
+	this.mouse_point = { index: -1, mouse_x: 0, mouse_y: 0 };
+	this.select_point = { index: -1, x: 0, y: 0, select: -1 };
 
 	this.is_second_click = false;
 
@@ -397,7 +398,7 @@ function Backpack() {
 	this.hp_set_index = -1;
 	this.mp_set_index = -1;
 
-	this.draw = function(ctx) {
+	this.draw = function (ctx) {
 		this.drawFrame(ctx);
 		for (var i in this.backpack[this.open]) {
 			if (this.backpack[this.open][i] != null) {
@@ -424,7 +425,7 @@ function Backpack() {
 						ctx.drawImage(window.resource.ui["backpack"][12], this.x + 9 + i % 4 * 36, this.y + 50 + parseInt(i / 4) * 36);
 					}
 
-				}	
+				}
 				if (this.select_point.index == i) {
 					ctx.strokeStyle = "orange";
 					ctx.lineWidth = 2;
@@ -451,12 +452,12 @@ function Backpack() {
 			ctx.textBaseline = "top";
 			ctx.fillText(this.backpack[this.open][this.mouse_point.index].name, this.mouse_point.mouse_x + 100, this.mouse_point.mouse_y + 5);
 			ctx.drawImage(this.backpack[this.open][this.mouse_point.index].img, this.mouse_point.mouse_x + 10, this.mouse_point.mouse_y + 30, 40, 40);
-			
+
 			ctx.font = "12px liwen";
 			ctx.textAlign = "left";
 			if (this.open == "装备") {
 				for (var i in this.backpack[this.open][this.mouse_point.index].des) {
-					ctx.fillText(this.backpack[this.open][this.mouse_point.index].des[i], this.mouse_point.mouse_x + 60 , this.mouse_point.mouse_y + 30 + 15*i);
+					ctx.fillText(this.backpack[this.open][this.mouse_point.index].des[i], this.mouse_point.mouse_x + 60, this.mouse_point.mouse_y + 30 + 15 * i);
 				}
 			} else {
 				ctx.fillText(this.backpack[this.open][this.mouse_point.index].des, this.mouse_point.mouse_x + 60, this.mouse_point.mouse_y + 30);
@@ -467,7 +468,7 @@ function Backpack() {
 		this.drawMenu(ctx);
 	}
 
-	this.drawMenu = function(ctx) {
+	this.drawMenu = function (ctx) {
 		if (this.select_point.index != -1) {
 			ctx.save();
 			ctx.strokeStyle = "black";
@@ -477,31 +478,31 @@ function Backpack() {
 			// ctx.strokeStyle = "black";
 			// ctx.roundRect(this.select_point.x + 1, this.select_point.y + 1, 48, 78, 10, false, true);
 
- 			ctx.globalAlpha = 0.5;
- 			ctx.roundRect(this.select_point.x, this.select_point.y, 50, 80, 10, true, false);
+			ctx.globalAlpha = 0.5;
+			ctx.roundRect(this.select_point.x, this.select_point.y, 50, 80, 10, true, false);
 
- 			ctx.globalAlpha = 1;
- 			ctx.font = "12px liwen";
- 			ctx.textAlign = "center";
- 			ctx.textBaseline = "top";
- 			ctx.fillStyle = "white";
- 			switch(this.open) {
- 				case "装备":
- 					ctx.fillText("装备", this.select_point.x + 25, this.select_point.y + 18);
- 					ctx.fillText("丢弃", this.select_point.x + 25, this.select_point.y + 48);
- 					break;
- 				case "消耗":
- 					ctx.fillText("设置", this.select_point.x + 25, this.select_point.y + 18);
- 					ctx.fillText("丢弃", this.select_point.x + 25, this.select_point.y + 48);
- 					break;
- 				case "其他":
- 					ctx.fillText("XXX", this.select_point.x + 25, this.select_point.y + 18);
- 					ctx.fillText("丢弃", this.select_point.x + 25, this.select_point.y + 48);	
- 					break;
- 			}
+			ctx.globalAlpha = 1;
+			ctx.font = "12px liwen";
+			ctx.textAlign = "center";
+			ctx.textBaseline = "top";
+			ctx.fillStyle = "white";
+			switch (this.open) {
+				case "装备":
+					ctx.fillText("装备", this.select_point.x + 25, this.select_point.y + 18);
+					ctx.fillText("丢弃", this.select_point.x + 25, this.select_point.y + 48);
+					break;
+				case "消耗":
+					ctx.fillText("设置", this.select_point.x + 25, this.select_point.y + 18);
+					ctx.fillText("丢弃", this.select_point.x + 25, this.select_point.y + 48);
+					break;
+				case "其他":
+					ctx.fillText("XXX", this.select_point.x + 25, this.select_point.y + 18);
+					ctx.fillText("丢弃", this.select_point.x + 25, this.select_point.y + 48);
+					break;
+			}
 
- 			ctx.restore();
- 		}
+			ctx.restore();
+		}
 	}
 
 	this.head = [];
@@ -510,7 +511,7 @@ function Backpack() {
 	this.head["其他"] = [1, 3, 6, 7, 9];
 	this.head["特殊"] = [1, 3, 5, 8, 9];
 	this.head["设置"] = [1, 3, 5, 7, 10];
-	this.drawFrame = function(ctx) {
+	this.drawFrame = function (ctx) {
 		ctx.save();
 		ctx.drawImage(window.resource.ui["backpack"][0], this.x, this.y);
 		var fix_y = 0;
@@ -527,10 +528,10 @@ function Backpack() {
 		ctx.restore();
 	}
 
-	this.checkItemCollision = function(mouse_x, mouse_y) {
+	this.checkItemCollision = function (mouse_x, mouse_y) {
 		if (this.select_point.index != -1) return;
 		for (var i in this.backpack[this.open]) {
-			if (this.backpack[this.open][i] != null && this.x + 12 +  i % 4 * 36 < mouse_x && mouse_x < this.x + 12 + i % 4 * 36 + 30 &&
+			if (this.backpack[this.open][i] != null && this.x + 12 + i % 4 * 36 < mouse_x && mouse_x < this.x + 12 + i % 4 * 36 + 30 &&
 				this.y + 52 + parseInt(i / 4) * 35 < mouse_y && mouse_y < this.y + 52 + parseInt(i / 4) * 35 + 30) {
 				this.mouse_point.index = i;
 				this.mouse_point.mouse_x = mouse_x;
@@ -541,30 +542,30 @@ function Backpack() {
 		this.mouse_point.index = -1;
 	}
 
-	this.checkItemSelect = function(mouse_x, mouse_y) {
-		if (this.count == 1){
+	this.checkItemSelect = function (mouse_x, mouse_y) {
+		if (this.count == 1) {
 			this.count = 2;
-		 	return;
+			return;
 		}
 
 		this.mouse_point.index = -1;
 		for (var i = 0; i < this.backpack[this.open].length; i++) {
- 			if (this.backpack[this.open][i] != null && this.x + 12 + i % 4 * 36 < mouse_x && mouse_x < this.x + 12 + i % 4 * 36 + 31 
- 				&& this.y + 50 + parseInt(i / 4) * 36 < mouse_y && mouse_y < this.y + 50 + parseInt(i / 4) * 36 + 31) {
- 				this.select_point.index = i;
- 				this.select_point.x = this.x + 12 + i % 4 * 36 + 31;
- 				this.select_point.y = this.y + 50 + parseInt(i / 4) * 36 + 31;
- 				this.count = 1;
- 				return;
- 			}
- 		}
- 		this.select_point.index = -1;
+			if (this.backpack[this.open][i] != null && this.x + 12 + i % 4 * 36 < mouse_x && mouse_x < this.x + 12 + i % 4 * 36 + 31
+				&& this.y + 50 + parseInt(i / 4) * 36 < mouse_y && mouse_y < this.y + 50 + parseInt(i / 4) * 36 + 31) {
+				this.select_point.index = i;
+				this.select_point.x = this.x + 12 + i % 4 * 36 + 31;
+				this.select_point.y = this.y + 50 + parseInt(i / 4) * 36 + 31;
+				this.count = 1;
+				return;
+			}
+		}
+		this.select_point.index = -1;
 	}
 
-	this.checkMenuSelect = function(mouse_x, mouse_y) {
+	this.checkMenuSelect = function (mouse_x, mouse_y) {
 		if (this.select_point.index == -1 || this.count != 2) {
 			return;
-		} 
+		}
 		if (this.select_point.x > mouse_x || mouse_x > this.select_point.x + 50) {
 			this.select_point.index = -1;
 			this.count = 0;
@@ -572,7 +573,7 @@ function Backpack() {
 		}
 		this.select_point.select = -1;
 		this.count = 0;
-		switch(this.open) {
+		switch (this.open) {
 			case "装备":
 				if (this.select_point.y + 18 < mouse_y && mouse_y < this.select_point.y + 30) {
 					this.select_point.select = 0;
@@ -598,8 +599,8 @@ function Backpack() {
 		this.selectResult();
 	}
 
-	this.selectResult = function() {
-		if (this.select_point.select == -1){ 
+	this.selectResult = function () {
+		if (this.select_point.select == -1) {
 			this.select_point.index = -1;
 			return;
 		}
@@ -624,7 +625,7 @@ function Backpack() {
 				this.empty_list[this.open].push(this.select_point.index);
 			}
 		} else {
-			switch(this.open) {
+			switch (this.open) {
 				case "装备":
 					var name = this.backpack[this.open][this.select_point.index].name;
 					if (name == "刮胡刀" || name == "凤凰刃" || name == "双翼刃" || name == "枫叶刃") {
@@ -691,7 +692,7 @@ function Backpack() {
 		this.select_point.index = -1;
 	}
 
-	this.changeType = function(mouse_x, mouse_y, is_click) {
+	this.changeType = function (mouse_x, mouse_y, is_click) {
 		if (is_click && this.y + 25 < mouse_y && mouse_y < this.y + 45) {
 			if (this.x + 7 < mouse_x && mouse_x < this.x + 7 + 31) {
 				this.open = "装备";
@@ -713,8 +714,8 @@ function Backpack() {
 		}
 	}
 
-	this.addMp = function() {
-		if (this.mp_set_index == -1) {return false;}
+	this.addMp = function () {
+		if (this.mp_set_index == -1) { return false; }
 
 		this.backpack["消耗"][this.mp_set_index].amount--;
 		var name = this.backpack["消耗"][this.mp_set_index].name;
@@ -757,8 +758,8 @@ function Backpack() {
 		}
 	}
 
-	this.addHp = function() {
-		if (this.hp_set_index == -1) {return false;}
+	this.addHp = function () {
+		if (this.hp_set_index == -1) { return false; }
 
 		this.backpack["消耗"][this.hp_set_index].amount--;
 		var name = this.backpack["消耗"][this.hp_set_index].name;
@@ -825,7 +826,7 @@ function OtherItem(name, amount, img) {
 }
 
 function DesFactory() {
-	this.equipmentDes = function(properties) {
+	this.equipmentDes = function (properties) {
 		var arr = [];
 		if (properties.attack != 0) {
 			arr.push("攻击力 " + properties.attack);
@@ -833,14 +834,14 @@ function DesFactory() {
 		if (properties.defense != 0) {
 			arr.push("物理防御力 " + properties.defense);
 		}
-		if (properties.magic_defense != 0) {	
+		if (properties.magic_defense != 0) {
 			arr.push("魔法防御力 " + properties.magic_defense);
 		}
 		return arr;
 	}
 
-	this.consumableDes = function(name) {
-		switch(name) {
+	this.consumableDes = function (name) {
+		switch (name) {
 			case "红色药水":
 				return "恢复HP 50";
 			case "橙色药水":
@@ -854,8 +855,8 @@ function DesFactory() {
 		}
 	}
 
-	this.otherDes = function(name) {
-		switch(name) {
+	this.otherDes = function (name) {
+		switch (name) {
 			case "蓝色蜗牛壳":
 				return "蓝色蜗牛的壳";
 			case "蘑菇芽孢":
@@ -897,7 +898,7 @@ function DesFactory() {
 		}
 	}
 
-	this.getDes = function(name, type) {
+	this.getDes = function (name, type) {
 		switch (type) {
 			case 1:
 				return this.equipmentDes(name);
@@ -912,20 +913,20 @@ function DesFactory() {
 }
 
 function PropertiesFactory() {
-	this.getProperties = function(name) {
-		switch(name) {
+	this.getProperties = function (name) {
+		switch (name) {
 			case "刮胡刀":
-				return {attack: 10 + parseInt(Math.random() * 6), defense: parseInt(Math.random() * 6), magic_defense: parseInt(Math.random() * 6), power_hit: 0}
+				return { attack: 10 + parseInt(Math.random() * 6), defense: parseInt(Math.random() * 6), magic_defense: parseInt(Math.random() * 6), power_hit: 0 }
 			case "凤凰刃":
-				return {attack: 72 + parseInt(Math.random() * 6), defense: 30 + parseInt(Math.random() * 6), magic_defense: 40 + parseInt(Math.random() * 6), power_hit: 0}
+				return { attack: 72 + parseInt(Math.random() * 6), defense: 30 + parseInt(Math.random() * 6), magic_defense: 40 + parseInt(Math.random() * 6), power_hit: 0 }
 			case "枫叶刃":
-				return {attack: 34 + parseInt(Math.random() * 6), defense: 10 + parseInt(Math.random() * 6), magic_defense: 15 + parseInt(Math.random() * 6), power_hit: 0}
+				return { attack: 34 + parseInt(Math.random() * 6), defense: 10 + parseInt(Math.random() * 6), magic_defense: 15 + parseInt(Math.random() * 6), power_hit: 0 }
 			case "双翼刃":
-				return {attack: 55 + parseInt(Math.random() * 6), defense: 24 + parseInt(Math.random() * 6), magic_defense: 60 + parseInt(Math.random() * 6), power_hit: 0}
+				return { attack: 55 + parseInt(Math.random() * 6), defense: 24 + parseInt(Math.random() * 6), magic_defense: 60 + parseInt(Math.random() * 6), power_hit: 0 }
 			case "青梦":
-				return {attack: parseInt(Math.random() * 6), defense: 45 + parseInt(Math.random() * 6), magic_defense: 30 + parseInt(Math.random() * 6), power_hit: 0}
+				return { attack: parseInt(Math.random() * 6), defense: 45 + parseInt(Math.random() * 6), magic_defense: 30 + parseInt(Math.random() * 6), power_hit: 0 }
 			case "黑唐衫":
-				return {attack: parseInt(Math.random() * 6), defense: 120 + parseInt(Math.random() * 11), magic_defense: 120 + parseInt(Math.random() * 11), power_hit: 0}
+				return { attack: parseInt(Math.random() * 6), defense: 120 + parseInt(Math.random() * 11), magic_defense: 120 + parseInt(Math.random() * 11), power_hit: 0 }
 		}
 	}
 }
@@ -934,7 +935,7 @@ function Ability() {
 	this.x = 300;
 	this.y = 50;
 
-	this.addPoint = function(mouse_x, mouse_y, is_click) {
+	this.addPoint = function (mouse_x, mouse_y, is_click) {
 		if (window.player_attr.point == 0 || mouse_x > this.x + 153 || mouse_x < this.x + 139) {
 			return;
 		}
@@ -955,11 +956,11 @@ function Ability() {
 		window.player_attr.update();
 	}
 
-	this.draw = function(ctx) {
+	this.draw = function (ctx) {
 		this.drawFrame(ctx);
 	}
 
-	this.drawFrame = function(ctx) {
+	this.drawFrame = function (ctx) {
 		ctx.save();
 		ctx.drawImage(window.resource.ui["ability"][0], this.x, this.y);
 
@@ -969,7 +970,7 @@ function Ability() {
 		ctx.fillStyle = "black";
 		ctx.fillText(window.player_attr.curr_hp + " / " + window.player_attr.max_hp, this.x + 55, this.y + 30);
 		ctx.fillText(window.player_attr.curr_mp + " / " + window.player_attr.max_mp, this.x + 55, this.y + 48);
-		ctx.fillText(window.player_attr.curr_exp +  " / " + window.player_attr.max_exp, this.x + 55, this.y + 66);
+		ctx.fillText(window.player_attr.curr_exp + " / " + window.player_attr.max_exp, this.x + 55, this.y + 66);
 		ctx.fillText(window.player_attr.work, this.x + 55, this.y + 84);
 
 		ctx.fillText(window.player_attr.min_attack + " ~ " + window.player_attr.max_attack, this.x + 55, this.y + 120);
@@ -992,7 +993,7 @@ function Ability() {
 		}
 
 		ctx.drawImage(window.resource.ui["ability"][index], this.x + 140, this.y + 245);
-		ctx.drawImage(window.resource.ui["ability"][index], this.x + 140, this.y + 263);	
+		ctx.drawImage(window.resource.ui["ability"][index], this.x + 140, this.y + 263);
 		ctx.drawImage(window.resource.ui["ability"][index], this.x + 140, this.y + 281);
 		ctx.drawImage(window.resource.ui["ability"][index], this.x + 140, this.y + 299);
 
@@ -1004,12 +1005,12 @@ function Equipment() {
 	this.x = 500;
 	this.y = 50;
 
-	this.mouse_point = {index: -1, mouse_x: 0, mouse_y: 0};
+	this.mouse_point = { index: -1, mouse_x: 0, mouse_y: 0 };
 
 	this.weapon = null;
 	this.clothes = null;
 
-	this.mouseHover = function(mouse_x, mouse_y) {
+	this.mouseHover = function (mouse_x, mouse_y) {
 		this.mouse_point.index = -1;
 		if (this.y + 128 > mouse_y || this.y + 159 < mouse_y) return;
 
@@ -1023,7 +1024,7 @@ function Equipment() {
 		}
 	}
 
-	this.draw = function(ctx) {
+	this.draw = function (ctx) {
 		ctx.save();
 		ctx.drawImage(window.resource.ui["equipment"][0], this.x, this.y);
 
@@ -1052,12 +1053,12 @@ function Equipment() {
 			ctx.textBaseline = "top";
 			ctx.fillText(this.weapon.name, this.mouse_point.mouse_x + 100, this.mouse_point.mouse_y + 5);
 			ctx.drawImage(this.weapon.img, this.mouse_point.mouse_x + 10, this.mouse_point.mouse_y + 30, 40, 40);
-			
+
 			ctx.font = "12px liwen";
 			ctx.textAlign = "left";
-			
+
 			for (var i in this.weapon.des) {
-				ctx.fillText(this.weapon.des[i], this.mouse_point.mouse_x + 60 , this.mouse_point.mouse_y + 30 + 15*i);
+				ctx.fillText(this.weapon.des[i], this.mouse_point.mouse_x + 60, this.mouse_point.mouse_y + 30 + 15 * i);
 			}
 		}
 		if (this.clothes != null && this.mouse_point.index == 1) {
@@ -1076,12 +1077,12 @@ function Equipment() {
 			ctx.textBaseline = "top";
 			ctx.fillText(this.clothes.name, this.mouse_point.mouse_x + 100, this.mouse_point.mouse_y + 5);
 			ctx.drawImage(this.clothes.img, this.mouse_point.mouse_x + 10, this.mouse_point.mouse_y + 30, 40, 40);
-			
+
 			ctx.font = "12px liwen";
 			ctx.textAlign = "left";
-			
+
 			for (var i in this.clothes.des) {
-				ctx.fillText(this.clothes.des[i], this.mouse_point.mouse_x + 60 , this.mouse_point.mouse_y + 30 + 15*i);
+				ctx.fillText(this.clothes.des[i], this.mouse_point.mouse_x + 60, this.mouse_point.mouse_y + 30 + 15 * i);
 			}
 		}
 		ctx.restore();

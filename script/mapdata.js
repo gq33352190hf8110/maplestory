@@ -109,9 +109,9 @@ function MapData(next_map) {
 		this.doors.push(this.createDoor(820, 270, "三岔路", window.WEST));
 
 		// monsters_stack
-		this.addToNormalMonstersStack(0, 405, 1080, 3, "蓝蜗牛");
-		this.addToNormalMonstersStack(0, 405, 1080, 3, "蘑菇仔");
-
+		this.addToNormalMonstersStack(0, 405, 1080, 3, "Blue Snail");
+		this.addToNormalMonstersStack(0, 405, 1080, 3, "Fungi");
+// Fungi // bluesnail
 		// map items
 		this.map_items.push(this.createItem(0, 0, 405, 1080, 20));
 	}
@@ -475,8 +475,8 @@ function MapData(next_map) {
 		this.map_items.push(this.createItem(1, 1198, 493, 20, 160));
 		this.map_items.push(this.createItem(1, 413, 370, 20, 230));
 	}
-
-	switch(this.position) {
+// Blue Snail
+	switch(this.position) { //
 		case "红枫树":
 			this.hongFengShu();
 			break;

@@ -477,8 +477,8 @@ function SkillManager(player, normal_monsters, skill_monsters, map, scene) {
 		this.is_finish = false;
 
 		this.player.skill(window.skill_action_factory.getSkillAction(this.player, this.name));
-
-		if (this.name == "落叶斩1") {
+// Blue Snail // Fungi // bluesnail
+		if (this.name == "落叶斩1") { // 
 			this.effect.push(window.skill_effect_factory.getSkillEffect(this.player, "落叶斩0"));
 			this.player.x = this.xy_luoyezhan.x;
 			this.player.y = this.xy_luoyezhan.y;

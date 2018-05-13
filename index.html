@@ -1,6 +1,7 @@
 ﻿<html>
 	<meta charset="utf-8">
 	<title>MS JS</title>
+	<link rel="icon" type="image/jpg" href="bg/ico3.jpg">
 	<style>
 		@font-face {
 			font-family: liwen;
@@ -9,12 +10,12 @@
 
 		*{margin: 0;}
 		body{-moz-user-select:none;}
-		#canvas{position: absolute;border: 1px solid #000;cursor: url("bg/cursor.png"), auto;z-index: 1;}
+		#canvas{position: absolute;border: 1px solid #000;cursor: url("bg/cursor.cur"), auto;z-index: 1;}
 		
-		.home {position: absolute; border:1px solid #000; width: 800px; height: 600px; cursor: url("bg/cursor.png"), auto;z-index: 2;}
+		.home {position: absolute; border:1px solid #000; width: 800px; height: 600px; cursor: url("bg/cursor.cur"), auto;z-index: 2;}
 		.version{position: absolute;right: 100px;top: 5px;font-weight: bold;font-size: 12px;display: none;}
 
-		button {position: absolute; font-size: 18px;font-weight: bold;font-family: liwen,微软雅黑;text-shadow: 0px 0px 5px #444;outline: none;background: transparent;border: none;cursor: url("bg/cursor.png"), auto;display: none;}
+		button {position: absolute; font-size: 18px;font-weight: bold;font-family: liwen,微软雅黑;text-shadow: 0px 0px 5px #444;outline: none;background: transparent;border: none;cursor: url("bg/cursor.cur"), auto;display: none;}
 		button:hover{text-shadow: 0px 0px 5px red;}
 		.select-btn{bottom: 150px;right: 100px;}
 		.help-btn{bottom: 120px;right: 100px;}
@@ -32,6 +33,9 @@
 		.help-frame span {font-weight: bold;font-size: 14px;text-shadow: 0px 0px 5px red;color:yellow;}
 	</style>	
 	<!-- <link rel="stylesheet" href="css/main.css" /> -->
+	<!-- 
+		Please take note to not mess up the sequence of the script load..
+	 -->
 	<script src="script/resources.js"></script>
 	<script src="script/monster_factory.js"></script>
 	<script src="script/constant.js"></script>

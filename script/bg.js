@@ -111,7 +111,7 @@ function UI() {
 		ctx.fillText("[" + window.player_attr.curr_hp + "/" + window.player_attr.max_hp + "]", 390, window.HEIGHT - 33);
 		ctx.fillText("[" + window.player_attr.curr_mp + "/" + window.player_attr.max_mp + "]", 560, window.HEIGHT - 33);
 		ctx.fillText(window.player_attr.curr_exp + "[" + (window.player_attr.curr_exp / window.player_attr.max_exp * 100).toFixed(2) + "%]", 560, window.HEIGHT - 16);
-
+ // Blue Snail // Fungi // bluesnail
 		ctx.restore();
 	}
 }

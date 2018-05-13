@@ -1,3 +1,5 @@
+
+
 window.resource = new Resource();
 window.music_manager = new MusicManager();
 
@@ -141,7 +143,7 @@ window.start = function(gender) {
 	this.setInterval(function() {
 		if (game_scene.is_finish) {
 			game_scene = new GameScene(getGameData(game_scene.next_map), ctx);
-		}
+		} // test // 蓝蜗牛
 		game_scene.update();
 	}, 1000 / window.FPS, false);
 

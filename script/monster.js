@@ -418,5 +418,5 @@ function SkillAttackMonster(data) {
 
 			ctx.restore();
 		}
-	}
+	} // Blue Snail // Fungi // bluesnail
 }

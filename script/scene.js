@@ -613,7 +613,7 @@ function GameScene(scene_obj, ctx) {
 		if (this.is_open_equipment_window) {
 			this.equipment.draw(ctx);
 		}
-
+// Blue Snail // Fungi // bluesnail
 		this.ui.draw(ctx);
 	}
 }

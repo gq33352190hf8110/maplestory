@@ -1,10 +1,11 @@
+
 window.FPS = 30;
 window.WIDTH = 800;
 window.HEIGHT = 600;
 
 window.INTERVAL = parseInt(1000 / window.FPS);
 window.WAIT_FRAME = parseInt(4500 / window.INTERVAL);
-window.PLAYER_HIT_SAFE_FRAME = parseInt(3000 / window.INTERVAL); 
+window.PLAYER_HIT_SAFE_FRAME = parseInt(3000 / window.INTERVAL);
 
 window.NORTH = 0;
 window.SOUTH = 1;

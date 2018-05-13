@@ -31,7 +31,7 @@ function Map(data) {
 		} else {
 			return false;
 		}
-	}
+	}// Blue Snail // Fungi // bluesnail
 
 	this.isDownMovable = function() {
 		if (this.height + this.y > window.HEIGHT) {

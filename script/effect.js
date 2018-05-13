@@ -20,6 +20,8 @@ function Door(data) {
 		this.curr_res = this.animation.getCurrFrame();
 	}
 
+	// blue snail
+
 	this.updateX = function(dx) {
 		this.x += dx;
 	}
@@ -40,7 +42,7 @@ function Door(data) {
 			return false;
 		}
 	}
-
+// blue snail
 	this.draw = function(ctx) {
 		ctx.drawImage(this.curr_res, this.x, this.y);
 	}
@@ -610,29 +612,29 @@ function TipsFactory() {
 	this.base_dy = 15;
 
 	this.createExpTip = function(exp) {
-		return new Tip("得到经验(+" + exp + ")", 6);
+		return new Tip("Gain exp(+" + exp + ")", 6);
 	}
 
 	this.createThingTip = function(tip_data) {
 		switch(tip_data.type) {
 			case 0:
-				return new Tip("得到金币(+" + tip_data.money + ")", 0);
+				return new Tip("Gain NeoCoins (+" + tip_data.money + ")", 0);
 			case 1:
-				return new Tip("得到装备(" + tip_data.name +")", 1);
+				return new Tip("Gain Item (" + tip_data.name +")", 1);
 			case 2:
 				var tip = "";
 				if (tip_data.amount > 1) {
-					tip = "得到" + tip_data.name + "(+" + tip_data.amount + "个)";
+					tip = "Gain" + tip_data.name + "(+" + tip_data.amount + "个)";
 				} else {
-					tip = "得到" + tip_data.name;
+					tip = "Gain" + tip_data.name;
 				}
 				return new Tip(tip, 2);
 			case 3: 
 				var tip = "";
 				if (tip_data.amount > 1) {
-					tip = "得到" + tip_data.name + "(+" + tip_data.amount + "个)";
+					tip = "Gain" + tip_data.name + "(+" + tip_data.amount + "个)";
 				} else {
-					tip = "得到" + tip_data.name;
+					tip = "Gain" + tip_data.name;
 				}
 				return new Tip(tip, 3);
 		}

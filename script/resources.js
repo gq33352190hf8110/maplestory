@@ -1,4 +1,5 @@
 function Resource() {
+	//
 	this.male_player_res_data = [{name: "walk1", total: 4}, 
 							{name: "stand1", total: 5},
 						    {name: "swingO1", total: 3},
@@ -74,10 +75,11 @@ function Resource() {
 							{name: "NoRed1", total: 10},
 							{name: "NoViolet1", total: 10}];
 	// monsters
-	this.lanwoniu_res_data = [{name: "die1", total: 3},
-						 {name: "hit1", total: 1},
-						 {name: "move", total: 7},
-						 {name: "stand", total: 1}];
+	this.bluesnail_res_data = [{name: "die1", total: 3},
+	                          {name: "hit1", total: 1},
+					          {name: "move", total: 7},
+							  {name: "stand", total: 1}];
+							  
 	this.moguzai_res_data = [{name: "die1", total: 4},
 						 {name: "hit1", total: 1},
 						 {name: "move", total: 4},
@@ -209,7 +211,7 @@ function Resource() {
 	this.effect = [];
 	this.map = [];
 
-	this.lanwoniu = [];
+	this.bluesnail = [];
 	this.moguzai = [];
 	this.jinjidecimogu = [];
 	this.xiaoqingshe = [];
@@ -261,7 +263,7 @@ function Resource() {
 		this.calculateTotal(this.effect_res_data);
 		this.calculateTotal(this.map_res_data);
 
-		this.calculateTotal(this.lanwoniu_res_data);
+		this.calculateTotal(this.bluesnail_res_data);
 		this.calculateTotal(this.moguzai_res_data);
 		this.calculateTotal(this.jinjidecimogu_res_data);
 		this.calculateTotal(this.xiaoqingshe_res_data);
@@ -311,7 +313,7 @@ function Resource() {
 		this.loadResurces(this.map, this.map_res_data, "map");
 		this.loadResurces(this.effect, this.effect_res_data, "effect");
 
-		this.loadResurces(this.lanwoniu, this.lanwoniu_res_data, "monster/lanwoniu");
+		this.loadResurces(this.bluesnail, this.bluesnail_res_data, "monster/lanwoniu");
 		this.loadResurces(this.moguzai, this.moguzai_res_data, "monster/moguzai");
 		this.loadResurces(this.jinjidecimogu, this.jinjidecimogu_res_data, "monster/jinjidecimogu");
 		this.loadResurces(this.xiaoqingshe, this.xiaoqingshe_res_data, "monster/xiaoqingshe");
@@ -356,7 +358,7 @@ function Resource() {
 			 	parent.curr_amount++;
 			});
 	}
-
+// Blue Snail // Fungi // bluesnail
 	this.loadResurces = function(res_obj, res_data, dir) {
 		var parent = this;
 		for (var i = 0; i < res_data.length; i++) {

@@ -2,6 +2,7 @@
 
 A 2D game using HTML5 and JS.
 
+**NOTICE**: I'm working on the algorithms first and maybe i will update some of the shit.
 
 ## Description
 A game inspired from Nexon's MapleStory.
@@ -10,7 +11,7 @@ A game inspired from Nexon's MapleStory.
 
 **demo**: [here](https://gq33352190hf8110.github.io/maplestory).
 
-Please Note: still in development.
+**__Status__**: __**``still in development.``**__
 
 ## How to Play
 - **Dirction key:** move

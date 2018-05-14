@@ -1,38 +1,15 @@
 ﻿<html>
 	<meta charset="utf-8">
 	<title>MS JS</title>
-	<link rel="icon" type="image/jpg" href="bg/ico3.jpg">
+	<link rel="icon" type="image/jpg" href="bg/ico5.jpg">
+	
 	<style>
 		@font-face {
 			font-family: liwen;
 			src: url("font/FZMWFont.ttf");
 		}
-
-		*{margin: 0;}
-		body{-moz-user-select:none;}
-		#canvas{position: absolute;border: 1px solid #000;cursor: url("bg/cursor.cur"), auto;z-index: 1;}
-		
-		.home {position: absolute; border:1px solid #000; width: 800px; height: 600px; cursor: url("bg/cursor.cur"), auto;z-index: 2;}
-		.version{position: absolute;right: 100px;top: 5px;font-weight: bold;font-size: 12px;display: none;}
-
-		button {position: absolute; font-size: 18px;font-weight: bold;font-family: liwen,微软雅黑;text-shadow: 0px 0px 5px #444;outline: none;background: transparent;border: none;cursor: url("bg/cursor.cur"), auto;display: none;}
-		button:hover{text-shadow: 0px 0px 5px red;}
-		.select-btn{bottom: 150px;right: 100px;}
-		.help-btn{bottom: 120px;right: 100px;}
-
-		.frame{width: 588px;position: absolute; margin-left:100px;font-family: liwen,微软雅黑;background: rgba(0, 0, 0, 0.6);border-radius: 8px;border: 1px solid orange;color:white;padding: 8px;font-size:14px;display: none;}
-		.select-frame{top:50px;}
-		.text{font-weight: bold;font-size: 14px;text-shadow: 0px 0px 5px red;color:yellow;text-align: center;}
-		.character{width: 320px;margin: 10px auto;}
-		img{width: 60px; height: 96;border-radius: 10px;padding: 30px;background:rgba(0, 0, 0, 0.6);box-shadow: 0 0 10px #000;transition: all 0.3s;margin-bottom:20px;}
-		img:hover{box-shadow: 0 0 20px red;background:rgba(0, 0, 0, 0.8);}
-		.left-img{float:left;}
-		.right-img{float: right;}
-
-		.help-frame{bottom: 190px;}
-		.help-frame span {font-weight: bold;font-size: 14px;text-shadow: 0px 0px 5px red;color:yellow;}
-	</style>	
-	<!-- <link rel="stylesheet" href="css/main.css" /> -->
+	</style>
+	<link rel="stylesheet" href="css/main.css" /> 
 	<!-- 
 		Please take note to not mess up the sequence of the script load..
 	 -->
@@ -54,29 +31,29 @@
 	<script src="script/scene.js"></script>
 	<script src="script/main.js"></script>
 
-	<body onselectstart="return false;">
+	<body background="bg/bg_out1.jpg" onselectstart="return false;" style="cursor: url('bg/cursor.cur'), default">
 		<audio id="home_audio" src="music/home.mp3" preload="true" loop="true"></audio>
-		<canvas id="canvas" width="800" height="600"></canvas>
-		<div class="home" id="home">
+		<canvas id="canvas" width="800" height="600" style="cursor: url('bg/cursor.cur'), default"></canvas>
+		<div class="home" id="home" style="cursor: url('bg/cursor.cur'), default">
 			<div class="version" id="version">V-1.0.1-Beta</div>
 			<!--select character-->
 			<div class="frame select-frame" id="select">
 				<div class="text">Please Choose A Character:</div>
 				<div class="character">
-					<img class="left-img" id="left_img" src="bg/male.png"/>
-					<img class="right-img" id="right_img" src="bg/female.png" onclick="start('female')"/>
+					<img class="left-img" id="left_img" src="bg/male.png" style="cursor: url('bg/cursor_click1.png'), default"/>
+					<img class="right-img" id="right_img" src="bg/female.png" style="cursor: url('bg/cursor_click1.png'), default" onclick="start('female')"/>
 				</div>
 			</div>
 			<!--help-->
 			<div class = "frame help-frame" id="help">
-				<div><span>How To Play：</span>Read Carefully，S - For Pick Up，D - For Jump，F，G，R，T - For Skills； 2 - Items，3 - Ability，4 - equipment；HP Regen - Ctrl，MPRegen - Shift。</div>
+				<div><span>How To Play：</span>Read Carefully，S - For Pick Up，spacebar - For Jump，F，G，R，T - For Skills； 2 - Items，3 - Ability，4 - equipment；HP Regen - Ctrl，MPRegen - Shift。</div>
 				<div><span>Objective：</span>Level Up And Be Strong!</div>
 				<div><span>Info：</span>This Is A Game Using JS. Inspiration From Nexon's MapleStory.</div>
 			</div>
 
 			<!--menu-->
-			<button class="select-btn" id="start_btn">Play Now</button>
-			<button class="help-btn" id="help_btn">Help</button>
+			<button class="select-btn" id="start_btn" style="cursor: url('bg/cursor_click1.png'), default">Play Now</button>
+			<button class="help-btn" id="help_btn" style="cursor: url('bg/cursor_click1.png'), default">Help</button>
 		</div>
 	</body>
 </html>

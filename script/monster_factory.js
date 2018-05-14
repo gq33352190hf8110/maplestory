@@ -26,7 +26,7 @@ function MonsterFactory() {
 			hit_animation: hit_animation, die_animation: die_animation, move_animation: move_animation, stand_animation: stand_animation // 动画
 		};
 	}
-	// Blue Snail // Fungi // bluesnail
+	// Blue Snail // Fungi // bluesnail //
 
 
 	this.getNormalMonster = function (data) {

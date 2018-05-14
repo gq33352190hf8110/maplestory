@@ -93,12 +93,12 @@ function PlayerAttr() { // TODO change this shit code
 	// player attribute
 	// def_level : 1
 	this.level = 1;
-	// gotta write a better exp per level
+	// TODO gotta write a better exp per level
 	this.level_exp = [15, 34, 57, 92, 135, 372, 560, 840, 1242, 1490, 1788, 2145, 2574, 
 					   3088, 3705, 4446, 5335, 6402, 7682, 9218, 11061, 13273, 15927, 19112,
 					   22934, 27520, 33024, 39628, 47553, 51357, 55465, 59902, 64694, 69869, 75458,
 					   81494, 88013, 999999999];
-	// gotta write a better thing
+	// TODO gotta write a better thing
 	this.max_hp = 50;
 	this.curr_hp = this.max_hp;
 	this.max_mp = 30;
@@ -133,6 +133,7 @@ function PlayerAttr() { // TODO change this shit code
 	}
 
 	this.point = 0;
+	// TODO 
 	this.STR = 4;
 	this.DEX = 4;
 	this.INT = 4;

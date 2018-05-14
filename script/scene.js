@@ -47,7 +47,7 @@ function GameScene(scene_obj, ctx) {
 	this.level_up = null;
 
 	this.keyDownEvent = function(event) {
-		switch (event.keyCode) {
+		switch (event.keyCode) { // TODO ;)
 			case 16: // shift
 				this.backpack.addMp();
 				break;
@@ -71,7 +71,7 @@ function GameScene(scene_obj, ctx) {
 				if (this.player.is_skill) return;
 				this.player.is_thing = true;
 				break;
-			case 68: // jump
+			case 32: // jump // lmao
 				if (this.player.is_rope) {
 					this.player.ropeJump();
 				} else if (this.player.is_jump || this.player.is_fall) {

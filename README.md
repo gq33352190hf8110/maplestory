@@ -16,7 +16,7 @@ A game inspired from Nexon's MapleStory.
 ## How to Play
 - **Dirction key:** move
 - **S:** pick up
-- **D:** jump
+- **spacebar:** jump
 - **F, G, R, T:** skills
 - **Ctrl, Shift:** HP and MP regen
 - **2, 3, 4:** items, ability, equipment
@@ -25,3 +25,7 @@ A game inspired from Nexon's MapleStory.
 ![image](screenshots/progress-2.jpg)
 
 ![image](screenshots/progress-1.jpg)
+
+###### Copyrights (C) The Thirteen ♥ 2018
+###### All copyrights are in their respective owner's.
+###### Credits: NEXON's company for their materials/ideas.

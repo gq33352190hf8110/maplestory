@@ -22,6 +22,6 @@ A game inspired from Nexon's MapleStory.
 - **2, 3, 4:** items, ability, equipment
 
 ## Screenshots
-![image](screenshots/maplestory1.jpg)
+![image](screenshots/progress-2.jpg)
 
-![image](screenshots/maplestory2.jpg)
+![image](screenshots/progress-1.jpg)

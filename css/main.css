@@ -1,5 +1,16 @@
 *{margin: 0;}
 body{-moz-user-select:none;}
+
+.footer {
+	position: fixed;
+	font-size: 18px;
+	font-family: liwen,微软雅黑;
+	text-shadow: 0px 0px 5px #444;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+}
 canvas {
     padding: 0;
     margin: auto;
